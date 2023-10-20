@@ -65,5 +65,14 @@ namespace ContactsApp.Models
             contacts.Add(contact);
         }
 
+        public static void DeleteContact(int contactId)
+        {
+            var contact = contacts.FirstOrDefault(x => x.ContactId == contactId);
+            if(contact != null)
+            {
+                contacts.Remove(contact);
+            }
+        }
+
     }
 }
