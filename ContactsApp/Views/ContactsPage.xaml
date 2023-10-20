@@ -20,6 +20,13 @@
                 <DataTemplate>
                     <TextCell Text="{Binding Name}"
                       Detail="{Binding Email}">
+                        <TextCell.ContextActions>
+                            <MenuItem Text="Delete"
+                                      IsDestructive="True"
+                                      Clicked="MenuDeleteItem_Clicked"
+                                      CommandParameter="{Binding .}"/>
+                            <MenuItem Text="About"/>
+                        </TextCell.ContextActions>
 
                     </TextCell>
                 </DataTemplate>
