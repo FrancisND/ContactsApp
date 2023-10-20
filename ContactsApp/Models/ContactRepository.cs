@@ -65,7 +65,5 @@ namespace ContactsApp.Models
             contacts.Add(contact);
         }
 
-
-
     }
 }

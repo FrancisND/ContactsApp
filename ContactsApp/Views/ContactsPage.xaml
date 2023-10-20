@@ -5,7 +5,8 @@
              Title="Contacts">
 
     <Grid RowDefinitions="*,50"
-          ColumnDefinitions="*">
+          ColumnDefinitions="*"
+          Padding="5">
         
         <ListView Grid.Row="0" Grid.Column="0"
           x:Name="listContacts" 
