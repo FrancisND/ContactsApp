@@ -74,5 +74,26 @@ namespace ContactsApp.Models
             }
         }
 
+        public static List<Contact> SearchContacts(string filterText)
+        {
+            var res = contacts.Where(x => !string.IsNullOrWhiteSpace(x.Name) && x.Name.StartsWith(filterText, StringComparison.OrdinalIgnoreCase))?.ToList();
+
+            if (res is null || res.Count <= 0)
+                contacts.Where(x => !string.IsNullOrWhiteSpace(x.Email) && x.Email.StartsWith(filterText, StringComparison.OrdinalIgnoreCase))?.ToList();
+            else
+                return res;
+
+            if (res is null || res.Count <= 0)
+                contacts.Where(x => !string.IsNullOrWhiteSpace(x.Phone) && x.Phone.StartsWith(filterText, StringComparison.OrdinalIgnoreCase))?.ToList();
+            else
+                return res;
+
+            if (res is null || res.Count <= 0)
+                contacts.Where(x => !string.IsNullOrWhiteSpace(x.Address) && x.Address.StartsWith(filterText, StringComparison.OrdinalIgnoreCase))?.ToList();
+            else
+                return res;
+
+            return res;
+        }
     }
 }
