@@ -4,11 +4,18 @@
              x:Class="ContactsApp.Views.ContactsPage"
              Title="Contacts">
 
-    <Grid RowDefinitions="*,50"
-          ColumnDefinitions="*"
+    <Grid RowDefinitions="50,*,50"
+          ColumnDefinitions="*,*"
           Padding="5">
-        
-        <ListView Grid.Row="0" Grid.Column="0"
+
+        <SearchBar
+            x:Name="SearchBar"
+            Grid.Row="0"
+            Grid.Column="1"
+            Placeholder="Search Contact"
+            TextChanged="SearchBar_TextChanged"></SearchBar>
+
+        <ListView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
           x:Name="listContacts" 
           BackgroundColor="Transparent"                                    
           SeparatorColor="Green"
@@ -35,8 +42,9 @@
         </ListView>
 
         <Button 
-                Grid.Row="1"
+                Grid.Row="2"
                 Grid.Column="0"
+                Grid.ColumnSpan="2"
                 x:Name="btnAdd"
                 Text="Add Contact"
                 Clicked="btnAdd_Clicked"/>
