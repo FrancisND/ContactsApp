@@ -71,7 +71,7 @@ namespace ContactsApp.Plugins.DataStore.InMemory
             if (contactId != contact.ContactId) return Task.CompletedTask;
 
             //var contactToUpdate = GetContactById(contactId);
-            var contactToUpdate = contacts. FirstOrDefault(x => x.ContactId == contactId);
+            var contactToUpdate = contacts.FirstOrDefault(x => x.ContactId == contactId);
             if (contactToUpdate != null)
             {
                 // AutoMapper
@@ -80,6 +80,15 @@ namespace ContactsApp.Plugins.DataStore.InMemory
                 contactToUpdate.Name = contact.Name;
                 contactToUpdate.Phone = contact.Phone;
             }
+
+            return Task.CompletedTask;
+        }
+
+        public Task AddContactAsync(Contact contact)
+        {
+            var maxId = contacts.Max(x => x.ContactId);
+            contact.ContactId = maxId + 1;
+            contacts.Add(contact);
 
             return Task.CompletedTask;
         }
