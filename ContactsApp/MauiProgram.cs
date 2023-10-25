@@ -1,5 +1,9 @@
 ﻿namespace ContactsApp;
 using CommunityToolkit.Maui;
+using ContactsApp.UseCases.Interfaces;
+using ContactsApp.UseCases;
+using ContactsApp.Plugins.DataStore.InMemory;
+using ContactsApp.Views;
 
 public static class MauiProgram
 {
@@ -14,6 +18,10 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
+
+		builder.Services.AddSingleton<IContactRepository, ContactInMemoryRepository>();
+		builder.Services.AddSingleton<IViewContactsUseCase, ViewContactsUseCase>();
+		builder.Services.AddSingleton<ContactsPage>();
 
 		return builder.Build();
 	}

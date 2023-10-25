@@ -5,6 +5,14 @@ VisualStudioVersion = 17.0.31611.283
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContactsApp", "ContactsApp\ContactsApp.csproj", "{CDBB796B-295D-421F-B8AE-EA2EBF26D04F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactsApp.CoreDomain", "ContactsApp.CoreDomain\ContactsApp.CoreDomain.csproj", "{B2DC196B-56BF-42BE-A50F-A003D589F816}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactsApp.UseCases", "ContactsApp.UseCases\ContactsApp.UseCases.csproj", "{12765005-9204-4FBD-96AB-6C92DE138604}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{A1AFD1F6-B831-4273-B11E-68D0236DE832}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactsApp.Plugins.DataStore.InMemory", "ContactsApp.Plugins.DataStore.InMemory\ContactsApp.Plugins.DataStore.InMemory.csproj", "{5A8C92D1-C033-41D9-B059-46E93A7970D1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,9 +25,24 @@ Global
 		{CDBB796B-295D-421F-B8AE-EA2EBF26D04F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CDBB796B-295D-421F-B8AE-EA2EBF26D04F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CDBB796B-295D-421F-B8AE-EA2EBF26D04F}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{B2DC196B-56BF-42BE-A50F-A003D589F816}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2DC196B-56BF-42BE-A50F-A003D589F816}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2DC196B-56BF-42BE-A50F-A003D589F816}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2DC196B-56BF-42BE-A50F-A003D589F816}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12765005-9204-4FBD-96AB-6C92DE138604}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12765005-9204-4FBD-96AB-6C92DE138604}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12765005-9204-4FBD-96AB-6C92DE138604}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12765005-9204-4FBD-96AB-6C92DE138604}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A8C92D1-C033-41D9-B059-46E93A7970D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A8C92D1-C033-41D9-B059-46E93A7970D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A8C92D1-C033-41D9-B059-46E93A7970D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A8C92D1-C033-41D9-B059-46E93A7970D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5A8C92D1-C033-41D9-B059-46E93A7970D1} = {A1AFD1F6-B831-4273-B11E-68D0236DE832}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61F7FB11-1E47-470C-91E2-47F8143E1572}
