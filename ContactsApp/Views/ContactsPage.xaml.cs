@@ -24,7 +24,7 @@ public partial class ContactsPage : ContentPage
     {
 		if(listContacts.SelectedItem != null)
 		{
-            var selectedItemId = ((Contact)listContacts.SelectedItem).ContactId;
+            var selectedItemId = ((CoreDomain.Contact)listContacts.SelectedItem).ContactId;
             await Shell.Current.GoToAsync($"{nameof(EditContactPage)}?Id={selectedItemId}");
 		}
     }

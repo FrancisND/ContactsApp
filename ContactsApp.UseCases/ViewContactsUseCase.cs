@@ -9,10 +9,12 @@ namespace ContactsApp.UseCases
     public class ViewContactsUseCase : IViewContactsUseCase
     {
         private readonly IContactRepository contactRepository;
+
         public ViewContactsUseCase(IContactRepository contactRepository)
         {
             this.contactRepository = contactRepository;
         }
+
         public async Task<List<Contact>> ExecuteAsync(string filterText)
         {
             return await contactRepository.GetContactsAsync(filterText);

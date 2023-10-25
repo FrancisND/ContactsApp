@@ -7,7 +7,7 @@ namespace ContactsApp.Plugins.DataStore.InMemory
     public class ContactInMemoryRepository : IContactRepository
     {
         public static List<Contact> contacts;
-
+         
         public ContactInMemoryRepository()
         {
             contacts = new List<Contact>()
@@ -46,6 +46,42 @@ namespace ContactsApp.Plugins.DataStore.InMemory
             return Task.FromResult(res);
         }
 
+        public Task<Contact> GetContactByIdAsync(int contactId)
+        {
+            // New code // Create a copy
+            var contact = contacts.FirstOrDefault(x => x.ContactId == contactId);
 
+            if (contact is not null)
+            {
+                return Task.FromResult(new Contact
+                {
+                    ContactId = contactId,
+                    Address = contact.Address,
+                    Email = contact.Email,
+                    Name = contact.Name,
+                    Phone = contact.Phone
+                });
+            }
+
+            return null;
+        }
+
+        public Task UpdateContactAsync(int contactId, Contact contact)
+        {
+            if (contactId != contact.ContactId) return Task.CompletedTask;
+
+            //var contactToUpdate = GetContactById(contactId);
+            var contactToUpdate = contacts. FirstOrDefault(x => x.ContactId == contactId);
+            if (contactToUpdate != null)
+            {
+                // AutoMapper
+                contactToUpdate.Address = contact.Address;
+                contactToUpdate.Email = contact.Email;
+                contactToUpdate.Name = contact.Name;
+                contactToUpdate.Phone = contact.Phone;
+            }
+
+            return Task.CompletedTask;
+        }
     }
 }
