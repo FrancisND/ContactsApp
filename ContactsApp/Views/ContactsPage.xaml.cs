@@ -1,12 +1,16 @@
 namespace ContactsApp.Views;
 using ContactsApp.Models;
+using ContactsApp.UseCases.Interfaces;
 using System.Collections.ObjectModel;
 
 public partial class ContactsPage : ContentPage
 {
-	public ContactsPage()
+    private readonly IViewContactsUseCase viewContactsUseCase;
+
+    public ContactsPage(IViewContactsUseCase viewContactsUseCase)
 	{
 		InitializeComponent();
+        this.viewContactsUseCase = viewContactsUseCase;
     }
 
     protected override void OnAppearing()
@@ -43,15 +47,17 @@ public partial class ContactsPage : ContentPage
         LoadContacts();     // Refresh list in listview. (even though list in memory it's already deleted)
     }
 
-    private void LoadContacts()
+    private async void LoadContacts()
     {
-        var contacts = new ObservableCollection<Contact>(ContactRepository.GetContacts());
+        var contacts = new ObservableCollection<CoreDomain.Contact>(await this.viewContactsUseCase.ExecuteAsync(string.Empty));
         listContacts.ItemsSource = contacts;
     }
 
-    private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+    private async void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
     {
-        var contacts = new ObservableCollection<Contact>(ContactRepository.SearchContacts(((SearchBar)sender).Text));
+        //var contacts = new ObservableCollection<Contact>(ContactRepository.SearchContacts(((SearchBar)sender).Text));
+        var contacts = new ObservableCollection<CoreDomain.Contact>(await this.viewContactsUseCase.ExecuteAsync(((SearchBar)sender).Text));
+
         listContacts.ItemsSource = contacts;
     }
 }
