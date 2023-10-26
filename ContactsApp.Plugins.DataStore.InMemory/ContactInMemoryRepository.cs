@@ -92,5 +92,16 @@ namespace ContactsApp.Plugins.DataStore.InMemory
 
             return Task.CompletedTask;
         }
+
+        public Task DeleteContactAsync(int contactId)
+        {
+            var contact = contacts.FirstOrDefault(x => x.ContactId == contactId);
+            if (contact != null)
+            {
+                contacts.Remove(contact);
+            }
+
+            return Task.CompletedTask;
+        }
     }
 }
